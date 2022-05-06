@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {interval, map, take} from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'AsyncPipe';
+
+  date$ = interval(1000).pipe(
+    map(x => new Date()),take(10)
+  );
+
+  // date$ is the observable
 }
